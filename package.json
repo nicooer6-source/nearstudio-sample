@@ -10,11 +10,13 @@
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
+    "@types/three": "^0.182.0",
     "@vitejs/plugin-react": "latest",
-    "shaders": "4.0.4",
-    "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "shaders": "4.0.4",
+    "three": "^0.182.0",
+    "vite": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",

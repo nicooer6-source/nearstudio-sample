@@ -1,0 +1,16 @@
+{
+  "slug": "new-studio-cursor-distortion",
+  "name": "New Studio Cursor Distortion",
+  "description": "在 New Studio 原首屏排版上移动鼠标，流体背景会产生连续的扰动轨迹。",
+  "category": "motion",
+  "tags": ["React", "Three.js", "GLSL", "Pointer"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "dark",
+  "updatedAt": "2026-10-16",
+  "sourcePath": "samples/new-studio-cursor-distortion/src/index.tsx",
+  "readmePath": "samples/new-studio-cursor-distortion/README.md",
+  "originalUrl": "https://www.new.studio/",
+  "interactionHint": "在预览区域内持续移动鼠标，观察蓝色流体被指针推开并留下轨迹。"
+}
