@@ -1,0 +1,32 @@
+@font-face { font-family: DdarkDisplay; src: url('/sample/ddark-particle/f0f05dbbe9c3b06e.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: DdarkMono; src: url('/sample/ddark-particle/aa2a5305ce0677e2.woff2') format('woff2'); font-display: swap; font-weight: 400; }
+@font-face { font-family: DdarkMono; src: url('/sample/ddark-particle/5645181d9fd25e01.woff2') format('woff2'); font-display: swap; font-weight: 700; }
+.ddark-hero { --paper: #e5e3dc; --ink: #2a2926; --smoke: #6e6c66; --vermilion: #e14d2a; position: relative; min-height: 100%; width: 100%; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); overflow: hidden; color: var(--ink); background: var(--paper); isolation: isolate; }
+.ddark-hero::after { content: ''; position: absolute; z-index: 5; inset: 0; opacity: .075; pointer-events: none; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
+.ddark-media { position: relative; min-height: 100%; overflow: hidden; }
+.ddark-disc { position: absolute; z-index: 0; left: 54%; top: 1%; width: min(38%,330px); aspect-ratio: 1; border-radius: 50%; background: var(--vermilion); transform: translateX(-50%); }
+.ddark-particle-field { position: absolute; z-index: 1; inset: 0; }
+.ddark-particle-field canvas { display: block; width: 100%; height: 100%; touch-action: pan-y; }
+.ddark-media small { position: absolute; z-index: 2; left: 24px; bottom: 22px; font: 10px DdarkMono, monospace; letter-spacing: .14em; color: var(--smoke); }
+.ddark-copy { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: clamp(28px,5vw,68px); }
+.ddark-copy h1 { margin: 0; font: 400 clamp(54px,7.2vw,110px)/.88 DdarkDisplay, Arial Black, sans-serif; letter-spacing: -.055em; }
+.ddark-copy h1 span { color: var(--vermilion); }
+.ddark-copy h2 { margin: clamp(22px,3vw,34px) 0 0; font: 400 clamp(22px,3vw,45px)/1 DdarkDisplay, Arial Black, sans-serif; letter-spacing: -.035em; }
+.ddark-copy p { max-width: 460px; margin: 26px 0 0; font: 400 clamp(12px,1.1vw,15px)/1.62 DdarkMono, monospace; }
+.ddark-copy a { display: inline-flex; width: fit-content; gap: 8px; margin-top: 28px; color: inherit; font: 700 13px DdarkMono, monospace; text-decoration: underline 2px var(--vermilion); text-underline-offset: 8px; }
+.ddark-copy a:hover { color: var(--vermilion); }
+.ddark-scroll { display: flex; align-items: center; gap: 14px; margin-top: 46px; color: var(--smoke); font: 400 10px DdarkMono, monospace; letter-spacing: .14em; }
+.ddark-scroll i { display: block; width: 40px; height: 1px; background: var(--ink); }
+.ddark-hero--thumbnail .ddark-copy { padding: 16px; }
+.ddark-hero--thumbnail .ddark-copy h1 { font-size: clamp(30px,7vw,66px); }
+.ddark-hero--thumbnail .ddark-copy h2 { margin-top: 14px; font-size: clamp(12px,2.5vw,26px); }
+.ddark-hero--thumbnail .ddark-media small { display: none; }
+@media (max-width: 700px) {
+  .ddark-hero { grid-template-columns: 1fr; grid-template-rows: minmax(54%,1fr) auto; }
+  .ddark-media { min-height: 48vh; }
+  .ddark-copy { padding: 26px; }
+  .ddark-copy h1 { font-size: clamp(48px,18vw,82px); }
+  .ddark-copy h2 { font-size: clamp(20px,7vw,34px); }
+  .ddark-copy p, .ddark-scroll { display: none; }
+  .ddark-media small { left: 14px; bottom: 12px; }
+}

@@ -1,0 +1,16 @@
+{
+  "slug": "ddark-particle-portrait",
+  "name": "DDARK Particle Portrait",
+  "description": "由肖像像素粒子构成的首屏，鼠标靠近时粒子会被推开，离开后弹性归位。",
+  "category": "motion",
+  "tags": ["React", "Canvas", "Particles", "Pointer"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "light",
+  "updatedAt": "2026-10-16",
+  "sourcePath": "samples/ddark-particle-portrait/src/index.tsx",
+  "readmePath": "samples/ddark-particle-portrait/README.md",
+  "originalUrl": "https://ddark.dev/",
+  "interactionHint": "在左侧肖像区域移动鼠标，像素会被指针推开并逐渐回到原位。"
+}
