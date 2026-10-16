@@ -1,0 +1,16 @@
+{
+  "slug": "shaders-ink-flow-cursor",
+  "name": "Ink Flow Cursor",
+  "description": "蓝紫流体跟随鼠标移动生成，在离开后自然扩散并消散。",
+  "category": "motion",
+  "tags": ["React", "WebGPU", "Shader", "Pointer"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "dark",
+  "updatedAt": "2026-10-16",
+  "sourcePath": "samples/shaders-ink-flow-cursor/src/index.tsx",
+  "readmePath": "samples/shaders-ink-flow-cursor/README.md",
+  "originalUrl": "https://shaders.com/",
+  "interactionHint": "在预览区域内移动鼠标，观察蓝紫色流体轨迹。"
+}
