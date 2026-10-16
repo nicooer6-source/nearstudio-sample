@@ -12,5 +12,15 @@
   "sourcePath": "samples/ddark-particle-portrait/src/index.tsx",
   "readmePath": "samples/ddark-particle-portrait/README.md",
   "originalUrl": "https://ddark.dev/",
-  "interactionHint": "在左侧肖像区域移动鼠标，像素会被指针推开并逐渐回到原位。"
+  "interactionHint": "在左侧肖像区域移动鼠标，像素会被指针推开并逐渐回到原位。",
+  "controls": [
+    { "key": "particleSize", "label": "粒子大小", "type": "range", "default": 2.5, "min": 1, "max": 5, "step": 0.25, "unit": "px" },
+    { "key": "particleGap", "label": "采样间距", "type": "range", "default": 7, "min": 4, "max": 14, "step": 1, "unit": "px" },
+    { "key": "interactionRadius", "label": "互动半径", "type": "range", "default": 120, "min": 40, "max": 240, "step": 5, "unit": "px" },
+    { "key": "force", "label": "推开力度", "type": "range", "default": 5, "min": 1, "max": 14, "step": 0.5 },
+    { "key": "returnSpeed", "label": "归位速度", "type": "range", "default": 0.08, "min": 0.02, "max": 0.2, "step": 0.01 },
+    { "key": "paperColor", "label": "背景颜色", "type": "color", "default": "#e5e3dc" },
+    { "key": "inkColor", "label": "文字与粒子", "type": "color", "default": "#2a2926" },
+    { "key": "accentColor", "label": "强调颜色", "type": "color", "default": "#e14d2a" }
+  ]
 }

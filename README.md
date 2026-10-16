@@ -4,7 +4,7 @@ Nearstudio 的前端组件画廊，部署于 `https://nearstudio.art/sample/`。
 
 ## 统一运行环境
 
-全部组件运行在 `src/runner/SampleRunner.tsx` 提供的共享 Runner 中。卡片、详情层和独立链接只传入组件 slug、状态与主题，不为每张卡片复制一套 Vite/React/iframe 环境。
+全部组件运行在 `src/runner/SampleRunner.tsx` 提供的共享 Runner 中。卡片、详情层和独立链接传入组件 slug、状态、主题与参数，不为每张卡片复制一套 Vite/React/iframe 环境。
 
 新增组件只需要添加：
 
@@ -17,6 +17,13 @@ samples/{slug}/
 ```
 
 画廊通过 `import.meta.glob` 自动发现清单、代码、说明和组件入口。
+
+## 可调参数与调用 URL
+
+- 组件在 `sample.json` 的 `controls` 中声明 `range`、`color` 或 `toggle` 参数，右侧设置面板会自动生成控件。
+- 组件入口通过 `SampleProps.parameters` 接收当前值，调整后会实时同步到共享 Runner。
+- “复制调用 URL”会生成包含全部参数的独立 Runner 地址，可直接用于 iframe 或产品页面。
+- “下载参数 JSON”会导出组件、状态、主题、参数与调用 URL，方便保存配置或交付开发。
 
 ## 本地运行
 

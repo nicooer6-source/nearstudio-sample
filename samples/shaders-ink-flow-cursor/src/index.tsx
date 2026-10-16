@@ -2,13 +2,15 @@ import { InkFlow, Shader, SolidColor, Stone } from 'shaders/react'
 import type { SampleProps } from '../../../src/types'
 import './style.css'
 
-export default function InkFlowCursorSample({ mode }: SampleProps) {
+export default function InkFlowCursorSample({ mode, parameters }: SampleProps) {
+  const number = (key: string, fallback: number) => typeof parameters[key] === 'number' ? parameters[key] as number : fallback
+  const text = (key: string, fallback: string) => typeof parameters[key] === 'string' ? parameters[key] as string : fallback
   return (
     <section className={`ink-flow-stage ink-flow-stage--${mode}`} aria-label="Shaders 首页鼠标流体拖尾演示">
       <Shader className="ink-flow-layer">
-        <SolidColor color="#0F0F10" />
-        <Stone intensity={1} scale={200}>
-          <InkFlow color1="#2216f7" color2="#55bdff" color3="#a702ff" colorMode="custom" />
+        <SolidColor color={text('background', '#0f0f10')} />
+        <Stone intensity={number('intensity', 1)} scale={number('scale', 200)}>
+          <InkFlow color1={text('color1', '#2216f7')} color2={text('color2', '#55bdff')} color3={text('color3', '#a702ff')} colorMode="custom" />
         </Stone>
       </Shader>
       <div className="ink-flow-hero">

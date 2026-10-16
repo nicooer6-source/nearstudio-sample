@@ -1,10 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type CSSProperties } from 'react'
 import type { SampleProps } from '../../../src/types'
 import './style.css'
 
 type ParticleGroup = { shade: number; indices: number[] }
 
-function ParticlePortrait() {
+function numberParameter(value: unknown, fallback: number) {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback
+}
+
+function ParticlePortrait({ parameters }: Pick<SampleProps, 'parameters'>) {
   const hostRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -15,6 +19,13 @@ function ParticlePortrait() {
     if (!host || !canvas || !context) return
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const particleSize = numberParameter(parameters.particleSize, 2.5)
+    const particleGap = numberParameter(parameters.particleGap, 7)
+    const interactionRadius = numberParameter(parameters.interactionRadius, 120)
+    const forceStrength = numberParameter(parameters.force, 5)
+    const returnSpeed = numberParameter(parameters.returnSpeed, 0.08)
+    const inkColor = typeof parameters.inkColor === 'string' ? parameters.inkColor : '#2a2926'
+    const ink = [1, 3, 5].map((offset) => parseInt(inkColor.slice(offset, offset + 2), 16))
     const image = new Image()
     image.src = `${import.meta.env.BASE_URL}ddark-particle/portrait.webp`
 
@@ -36,11 +47,12 @@ function ParticlePortrait() {
     const draw = () => {
       context.clearRect(0, 0, width, height)
       for (const group of groups) {
-        context.fillStyle = `rgb(${group.shade}, ${group.shade}, ${group.shade})`
+        const shade = group.shade / 194
+        context.fillStyle = `rgb(${Math.round(ink[0] * shade)}, ${Math.round(ink[1] * shade)}, ${Math.round(ink[2] * shade)})`
         context.beginPath()
         for (const index of group.indices) {
-          context.moveTo(x[index] + 2.5, y[index])
-          context.arc(x[index], y[index], 2.5, 0, Math.PI * 2)
+          context.moveTo(x[index] + particleSize, y[index])
+          context.arc(x[index], y[index], particleSize, 0, Math.PI * 2)
         }
         context.fill()
       }
@@ -58,19 +70,19 @@ function ParticlePortrait() {
         if (pointerActive) {
           const dx = pointer.x - px
           const dy = pointer.y - py
-          if (Math.abs(dx) < 120 && Math.abs(dy) < 120) {
+          if (Math.abs(dx) < interactionRadius && Math.abs(dy) < interactionRadius) {
             const distanceSquared = dx * dx + dy * dy
-            if (distanceSquared > 0.001 && distanceSquared < 14400) {
+            if (distanceSquared > 0.001 && distanceSquared < interactionRadius * interactionRadius) {
               const distance = Math.sqrt(distanceSquared)
-              const force = (120 - distance) / 120
-              vx -= (dx / distance) * force * 5
-              vy -= (dy / distance) * force * 5
+              const force = (interactionRadius - distance) / interactionRadius
+              vx -= (dx / distance) * force * forceStrength
+              vy -= (dy / distance) * force * forceStrength
             }
           }
         }
 
-        vx += (homeX[index] - px) * 0.08
-        vy += (homeY[index] - py) * 0.08
+        vx += (homeX[index] - px) * returnSpeed
+        vy += (homeY[index] - py) * returnSpeed
         vx *= 0.85
         vy *= 0.85
         px += vx
@@ -124,7 +136,7 @@ function ParticlePortrait() {
       sourceContext.drawImage(image, (source.width - drawWidth) / 2, (source.height - drawHeight) / 2, drawWidth, drawHeight)
       sourceContext.restore()
       const pixels = sourceContext.getImageData(0, 0, source.width, source.height)
-      const density = Math.max(1, Math.floor(7 * dpr))
+      const density = Math.max(1, Math.floor(particleGap * dpr))
       const points: Array<{ x: number; y: number; shade: number }> = []
       for (let sy = 0; sy < pixels.height; sy += density) {
         for (let sx = 0; sx < pixels.width; sx += density) {
@@ -203,17 +215,22 @@ function ParticlePortrait() {
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
     }
-  }, [])
+  }, [parameters])
 
   return <div ref={hostRef} className="ddark-particle-field"><canvas ref={canvasRef} aria-label="Dmitrii Dark portrait rendered as interactive particles" /></div>
 }
 
-export default function DdarkParticlePortrait({ mode }: SampleProps) {
+export default function DdarkParticlePortrait({ mode, parameters }: SampleProps) {
+  const style = {
+    '--paper': typeof parameters.paperColor === 'string' ? parameters.paperColor : '#e5e3dc',
+    '--ink': typeof parameters.inkColor === 'string' ? parameters.inkColor : '#2a2926',
+    '--vermilion': typeof parameters.accentColor === 'string' ? parameters.accentColor : '#e14d2a',
+  } as CSSProperties
   return (
-    <section className={`ddark-hero ddark-hero--${mode}`} aria-label="DDARK 首页像素肖像互动演示">
+    <section className={`ddark-hero ddark-hero--${mode}`} style={style} aria-label="DDARK 首页像素肖像互动演示">
       <div className="ddark-media">
         <span className="ddark-disc" aria-hidden="true" />
-        <ParticlePortrait />
+        <ParticlePortrait parameters={parameters} />
         <small>[ FIG. 01 — PARTICLE STUDY ]</small>
       </div>
       <div className="ddark-copy">

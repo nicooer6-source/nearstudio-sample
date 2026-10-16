@@ -53,6 +53,24 @@
 .inspector-body { padding: 16px; }
 .control-section { margin-bottom: 22px; }
 .control-section h2 { margin: 0 0 10px; color: #a8a5ad; font-size: 10px; text-transform: uppercase; letter-spacing: .09em; }
+.parameter-list { display: grid; gap: 7px; }
+.parameter-control { display: grid; gap: 9px; padding: 11px 12px; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
+.parameter-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.parameter-heading b { color: #dedbe3; font-size: 11px; font-weight: 520; }
+.parameter-heading output { color: #8d8994; font: 9.5px var(--font-mono); }
+.parameter-control input[type="range"] { width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; }
+.parameter-control--color { grid-template-columns: 1fr auto; align-items: center; }
+.parameter-control--color .parameter-heading { min-width: 0; }
+.parameter-control input[type="color"] { width: 38px; height: 28px; padding: 2px; border: 1px solid var(--line-strong); background: transparent; cursor: pointer; }
+.parameter-control--toggle { grid-template-columns: 1fr auto; align-items: center; }
+.parameter-toggle { width: 34px; height: 18px; padding: 2px; border: 1px solid var(--line-strong); border-radius: 20px; background: #242229; cursor: pointer; }
+.parameter-toggle span { display: block; width: 12px; height: 12px; border-radius: 50%; background: #77737e; transition: transform .18s ease, background .18s ease; }
+.parameter-toggle.is-active span { transform: translateX(16px); background: #51ca91; }
+.export-section { padding: 12px; border: 1px solid rgba(216,74,49,.28); background: rgba(216,74,49,.055); }
+.export-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.export-actions button, .export-actions a { min-height: 36px; padding: 0 9px; border: 1px solid rgba(216,74,49,.44); background: rgba(216,74,49,.11); color: #f0dfdc; cursor: pointer; font-size: 10px; text-decoration: none; display: grid; place-items: center; }
+.export-actions button:hover, .export-actions a:hover { background: rgba(216,74,49,.2); }
+.export-section p { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
 .choice-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 5px; }
 .choice-grid--three { grid-template-columns: repeat(3,1fr); }
 .choice-grid button { min-height: 34px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; font: 10px var(--font-mono); }

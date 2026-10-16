@@ -16,6 +16,13 @@ for (const folder of await readdir(root)) {
   if (!categories.has(manifest.category)) throw new Error(`${folder}: invalid category`)
   if (!statuses.has(manifest.status)) throw new Error(`${folder}: invalid status`)
   if (!manifest.states.includes(manifest.thumbnailState)) throw new Error(`${folder}: thumbnailState must be in states`)
+  const keys = new Set()
+  for (const control of manifest.controls ?? []) {
+    if (!control.key || !control.label || !['range','color','toggle'].includes(control.type)) throw new Error(`${folder}: invalid control`)
+    if (keys.has(control.key)) throw new Error(`${folder}: duplicate control key ${control.key}`)
+    if (control.type === 'range' && ![control.default, control.min, control.max, control.step].every(Number.isFinite)) throw new Error(`${folder}: range control ${control.key} needs numeric default/min/max/step`)
+    keys.add(control.key)
+  }
   await stat(new URL(`${folder}/src/index.tsx`, root))
   await stat(new URL(`${folder}/README.md`, root))
   seen.add(manifest.slug)

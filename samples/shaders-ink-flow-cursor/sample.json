@@ -12,5 +12,13 @@
   "sourcePath": "samples/shaders-ink-flow-cursor/src/index.tsx",
   "readmePath": "samples/shaders-ink-flow-cursor/README.md",
   "originalUrl": "https://shaders.com/",
-  "interactionHint": "在预览区域内移动鼠标，观察蓝紫色流体轨迹。"
+  "interactionHint": "在预览区域内移动鼠标，观察蓝紫色流体轨迹。",
+  "controls": [
+    { "key": "intensity", "label": "纹理强度", "type": "range", "default": 1, "min": 0.2, "max": 2, "step": 0.1 },
+    { "key": "scale", "label": "纹理尺度", "type": "range", "default": 200, "min": 60, "max": 360, "step": 10 },
+    { "key": "color1", "label": "主色", "type": "color", "default": "#2216f7" },
+    { "key": "color2", "label": "高光色", "type": "color", "default": "#55bdff" },
+    { "key": "color3", "label": "混合色", "type": "color", "default": "#a702ff" },
+    { "key": "background", "label": "底色", "type": "color", "default": "#0f0f10" }
+  ]
 }

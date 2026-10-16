@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import type { SampleParameterValues } from '../types'
 import {
   HalfFloatType,
   LinearFilter,
@@ -79,7 +80,10 @@ const color = (hex: string) => new Vector3(
   parseInt(hex.slice(5, 7), 16) / 255,
 )
 
-export function NewStudioFluid({ interactive = true, className = '' }: { interactive?: boolean; className?: string }) {
+const numeric = (values: SampleParameterValues, key: string, fallback: number) => typeof values[key] === 'number' ? values[key] as number : fallback
+const colorValue = (values: SampleParameterValues, key: string, fallback: string) => typeof values[key] === 'string' ? values[key] as string : fallback
+
+export function NewStudioFluid({ interactive = true, className = '', parameters = {} }: { interactive?: boolean; className?: string; parameters?: SampleParameterValues }) {
   const hostRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -101,11 +105,11 @@ export function NewStudioFluid({ interactive = true, className = '' }: { interac
     const geometry = new PlaneGeometry(2, 2)
     const fluidMaterial = new ShaderMaterial({ vertexShader, fragmentShader: fluidShader, uniforms: {
       iResolution: { value: new Vector2(width, height) }, iMouse: { value: new Vector4(0, 0, 0, 0) }, iFrame: { value: 0 }, iPreviousFrame: { value: null },
-      uBrushSize: { value: 30 }, uBrushStrength: { value: 2 }, uFluidDecay: { value: .98 }, uTrailLength: { value: .8 }, uStopDecay: { value: .85 },
+      uBrushSize: { value: numeric(parameters, 'brushSize', 30) }, uBrushStrength: { value: numeric(parameters, 'brushStrength', 2) }, uFluidDecay: { value: .98 }, uTrailLength: { value: numeric(parameters, 'trail', .8) }, uStopDecay: { value: .85 },
     } })
     const colorMaterial = new ShaderMaterial({ vertexShader, fragmentShader: colorShader, uniforms: {
-      iTime: { value: 0 }, iResolution: { value: new Vector2(width, height) }, iFluid: { value: null }, uDistortionAmount: { value: 1 },
-      uColor1: { value: color('#002651') }, uColor2: { value: color('#9CC7FF') }, uColor3: { value: color('#0000F8') }, uColor4: { value: color('#459AFF') },
+      iTime: { value: 0 }, iResolution: { value: new Vector2(width, height) }, iFluid: { value: null }, uDistortionAmount: { value: numeric(parameters, 'distortion', 1) },
+      uColor1: { value: color(colorValue(parameters, 'color1', '#002651')) }, uColor2: { value: color(colorValue(parameters, 'color2', '#9CC7FF')) }, uColor3: { value: color(colorValue(parameters, 'color3', '#0000F8')) }, uColor4: { value: color('#459AFF') },
       uColorIntensity: { value: 1 }, uSoftness: { value: 1 },
     } })
     const fluidMesh = new Mesh(geometry, fluidMaterial)
@@ -144,7 +148,7 @@ export function NewStudioFluid({ interactive = true, className = '' }: { interac
       cancelAnimationFrame(raf); observer.disconnect(); window.removeEventListener('pointermove', move); document.removeEventListener('mouseleave', leave)
       renderer.dispose(); current.dispose(); previous.dispose(); geometry.dispose(); fluidMaterial.dispose(); colorMaterial.dispose(); host.removeChild(renderer.domElement)
     }
-  }, [interactive])
+  }, [interactive, parameters])
 
   return <div ref={hostRef} className={className} aria-hidden="true" />
 }
