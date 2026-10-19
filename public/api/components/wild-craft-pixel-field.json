@@ -1,7 +1,7 @@
 {
   "slug": "wild-craft-pixel-field",
   "name": "Wild Craft Pixel Field",
-  "description": "Wild《Craft, Engineered》首页的彩色像素场，鼠标经过会点亮并搅动网格，点击会产生扩散波。",
+  "description": "Wild《Craft, Engineered》首页的原版像素场：连续鼠标轨迹、标题指向箭头、停留吃豆人和蓄力冲击波。",
   "status": "stable",
   "category": "motion",
   "states": [
@@ -13,47 +13,37 @@
       "label": "像素尺寸",
       "type": "range",
       "default": 9,
-      "min": 5,
-      "max": 20,
+      "min": 7,
+      "max": 22,
       "step": 1,
       "unit": "px"
     },
     {
       "key": "brushSize",
-      "label": "鼠标笔刷",
+      "label": "笔刷格数",
       "type": "range",
-      "default": 92,
-      "min": 30,
-      "max": 220,
-      "step": 2,
-      "unit": "px"
-    },
-    {
-      "key": "fieldDensity",
-      "label": "像素密度",
-      "type": "range",
-      "default": 0.72,
-      "min": 0.35,
-      "max": 1,
-      "step": 0.01
+      "default": 10,
+      "min": 5,
+      "max": 20,
+      "step": 1
     },
     {
       "key": "motionSpeed",
       "label": "流动速度",
       "type": "range",
-      "default": 0.55,
-      "min": 0,
-      "max": 1.5,
+      "default": 1,
+      "min": 0.25,
+      "max": 2,
       "step": 0.05
     },
     {
       "key": "trail",
-      "label": "轨迹长度",
+      "label": "轨迹衰减",
       "type": "range",
-      "default": 0.88,
-      "min": 0.72,
-      "max": 0.97,
-      "step": 0.01
+      "default": 0.878,
+      "min": 0.75,
+      "max": 0.96,
+      "step": 0.001
     },
     {
       "key": "navy",
@@ -88,17 +78,16 @@
   ],
   "defaults": {
     "cellSize": 9,
-    "brushSize": 92,
-    "fieldDensity": 0.72,
-    "motionSpeed": 0.55,
-    "trail": 0.88,
+    "brushSize": 10,
+    "motionSpeed": 1,
+    "trail": 0.878,
     "navy": "#1c2541",
     "blue": "#3b5bd9",
     "yellow": "#f5c518",
     "red": "#e0492a",
     "neon": "#d8ff00"
   },
-  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=wild-craft-pixel-field&state=default&theme=light&mode=standalone&p.cellSize=9&p.brushSize=92&p.fieldDensity=0.72&p.motionSpeed=0.55&p.trail=0.88&p.navy=%231c2541&p.blue=%233b5bd9&p.yellow=%23f5c518&p.red=%23e0492a&p.neon=%23d8ff00",
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=wild-craft-pixel-field&state=default&theme=light&mode=standalone&p.cellSize=9&p.brushSize=10&p.motionSpeed=1&p.trail=0.878&p.navy=%231c2541&p.blue=%233b5bd9&p.yellow=%23f5c518&p.red=%23e0492a&p.neon=%23d8ff00",
   "loaderUrl": "https://nearstudio.art/sample/embed.js",
   "element": "nearstudio-component"
 }
