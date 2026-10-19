@@ -68,9 +68,14 @@
 .parameter-toggle.is-active span { transform: translateX(16px); background: #51ca91; }
 .export-section { padding: 12px; border: 1px solid rgba(216,74,49,.28); background: rgba(216,74,49,.055); }
 .export-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.export-actions--three { grid-template-columns: repeat(3,1fr); }
 .export-actions button, .export-actions a { min-height: 36px; padding: 0 9px; border: 1px solid rgba(216,74,49,.44); background: rgba(216,74,49,.11); color: #f0dfdc; cursor: pointer; font-size: 10px; text-decoration: none; display: grid; place-items: center; }
 .export-actions button:hover, .export-actions a:hover { background: rgba(216,74,49,.2); }
 .export-section p { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+.integration-code { margin-bottom: 8px; padding: 9px; max-height: 106px; overflow: auto; border: 1px solid var(--line); background: #0d0c10; }
+.integration-code code { white-space: pre-wrap; word-break: break-all; color: #c8c5cc; font: 9px/1.5 var(--font-mono); }
+.parameter-download { margin-top: 6px; min-height: 32px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); text-decoration: none; font-size: 10px; }
+.parameter-download:hover { color: var(--text); border-color: var(--line-strong); }
 .choice-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 5px; }
 .choice-grid--three { grid-template-columns: repeat(3,1fr); }
 .choice-grid button { min-height: 34px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; font: 10px var(--font-mono); }

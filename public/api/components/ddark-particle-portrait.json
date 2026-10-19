@@ -1,0 +1,91 @@
+{
+  "slug": "ddark-particle-portrait",
+  "name": "DDARK Particle Portrait",
+  "description": "由肖像像素粒子构成的首屏，鼠标靠近时粒子会被推开，离开后弹性归位。",
+  "status": "stable",
+  "category": "motion",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "particleSize",
+      "label": "粒子大小",
+      "type": "range",
+      "default": 2.5,
+      "min": 1,
+      "max": 5,
+      "step": 0.25,
+      "unit": "px"
+    },
+    {
+      "key": "particleGap",
+      "label": "采样间距",
+      "type": "range",
+      "default": 7,
+      "min": 4,
+      "max": 14,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "key": "interactionRadius",
+      "label": "互动半径",
+      "type": "range",
+      "default": 120,
+      "min": 40,
+      "max": 240,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "key": "force",
+      "label": "推开力度",
+      "type": "range",
+      "default": 5,
+      "min": 1,
+      "max": 14,
+      "step": 0.5
+    },
+    {
+      "key": "returnSpeed",
+      "label": "归位速度",
+      "type": "range",
+      "default": 0.08,
+      "min": 0.02,
+      "max": 0.2,
+      "step": 0.01
+    },
+    {
+      "key": "paperColor",
+      "label": "背景颜色",
+      "type": "color",
+      "default": "#e5e3dc"
+    },
+    {
+      "key": "inkColor",
+      "label": "文字与粒子",
+      "type": "color",
+      "default": "#2a2926"
+    },
+    {
+      "key": "accentColor",
+      "label": "强调颜色",
+      "type": "color",
+      "default": "#e14d2a"
+    }
+  ],
+  "defaults": {
+    "particleSize": 2.5,
+    "particleGap": 7,
+    "interactionRadius": 120,
+    "force": 5,
+    "returnSpeed": 0.08,
+    "paperColor": "#e5e3dc",
+    "inkColor": "#2a2926",
+    "accentColor": "#e14d2a"
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=ddark-particle-portrait&state=default&theme=light&mode=standalone&p.particleSize=2.5&p.particleGap=7&p.interactionRadius=120&p.force=5&p.returnSpeed=0.08&p.paperColor=%23e5e3dc&p.inkColor=%232a2926&p.accentColor=%23e14d2a",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}

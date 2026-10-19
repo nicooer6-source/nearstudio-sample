@@ -27,6 +27,10 @@ function runnerUrl(sample: SampleManifest, state: string, theme: Theme, mode = '
   return url.toString()
 }
 
+function htmlAttribute(value: string) {
+  return value.replaceAll('&', '&amp;').replaceAll("'", '&#39;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+}
+
 function controlValue(control: SampleControl, value: SampleParameterValue, onChange: (value: SampleParameterValue) => void) {
   if (control.type === 'color') {
     return <input aria-label={control.label} type="color" value={String(value)} onChange={(event) => onChange(event.target.value)} />
@@ -50,7 +54,7 @@ export function GalleryApp() {
   const [parameterSets, setParameterSets] = useState<Record<string, SampleParameterValues>>(() =>
     Object.fromEntries(samples.map((sample) => [sample.slug, defaultParameters(sample.controls)])),
   )
-  const [copyLabel, setCopyLabel] = useState('复制调用 URL')
+  const [copied, setCopied] = useState<'url' | 'html' | 'react' | null>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const selected = samples.find((sample) => sample.slug === selectedSlug) ?? samples[0]
@@ -65,7 +69,7 @@ export function GalleryApp() {
     if (!selected) return
     setState(selected.states[0])
     setTheme(selected.thumbnailTheme)
-    setCopyLabel('复制调用 URL')
+    setCopied(null)
     const url = new URL(window.location.href)
     url.searchParams.set('component', selected.slug)
     window.history.replaceState({}, '', url)
@@ -85,6 +89,10 @@ export function GalleryApp() {
 
   const previewSrc = runnerUrl(selected, state, theme)
   const shareUrl = runnerUrl(selected, state, theme, 'standalone', selectedParameters)
+  const loaderUrl = new URL('embed.js', window.location.origin + import.meta.env.BASE_URL).toString()
+  const serializedParameters = JSON.stringify(selectedParameters)
+  const htmlSnippet = `<script src="${loaderUrl}"></script>\n<nearstudio-component\n  component="${selected.slug}"\n  state="${state}"\n  theme="${theme}"\n  params='${htmlAttribute(serializedParameters)}'\n  height="720"\n></nearstudio-component>`
+  const reactSnippet = `<iframe\n  src="${shareUrl}"\n  title="${selected.name}"\n  style={{ width: '100%', height: 720, border: 0 }}\n/>`
   const sourceUrl = `https://github.com/nicooer6-source/nearstudio-sample/blob/main/${selected.sourcePath}`
   const downloadPayload = JSON.stringify({ component: selected.slug, state, theme, parameters: selectedParameters, url: shareUrl }, null, 2)
   const downloadHref = `data:application/json;charset=utf-8,${encodeURIComponent(downloadPayload)}`
@@ -105,10 +113,10 @@ export function GalleryApp() {
     setReloadKey((key) => key + 1)
   }
 
-  const copyUrl = async () => {
-    await navigator.clipboard.writeText(shareUrl)
-    setCopyLabel('已复制')
-    window.setTimeout(() => setCopyLabel('复制调用 URL'), 1600)
+  const copyIntegration = async (kind: 'url' | 'html' | 'react', value: string) => {
+    await navigator.clipboard.writeText(value)
+    setCopied(kind)
+    window.setTimeout(() => setCopied(null), 1600)
   }
 
   return (
@@ -160,11 +168,21 @@ export function GalleryApp() {
                 {controlValue(control, selectedParameters[control.key] ?? control.default, (value) => setParameter(control.key, value))}
               </label>)}
             </div></section>}
-            <section className="control-section export-section"><h2>调用与导出</h2><div className="export-actions"><button onClick={copyUrl}>{copyLabel}</button><a href={downloadHref} download={`${selected.slug}-parameters.json`}>下载参数 JSON</a></div><p>URL 可直接放进 iframe 或产品页面中加载当前效果。</p></section>
+            <section className="control-section export-section">
+              <h2>组件接口</h2>
+              <div className="integration-code"><code>{htmlSnippet}</code></div>
+              <div className="export-actions export-actions--three">
+                <button onClick={() => copyIntegration('html', htmlSnippet)}>{copied === 'html' ? '已复制' : '复制 HTML'}</button>
+                <button onClick={() => copyIntegration('react', reactSnippet)}>{copied === 'react' ? '已复制' : '复制 React'}</button>
+                <button onClick={() => copyIntegration('url', shareUrl)}>{copied === 'url' ? '已复制' : '复制运行 URL'}</button>
+              </div>
+              <a className="parameter-download" href={downloadHref} download={`${selected.slug}-parameters.json`}>下载参数 JSON</a>
+              <p>复制后即可在其他项目里加载。接口地址公开，画廊管理页仍受邀请码保护。</p>
+            </section>
             <section className="control-section"><h2>状态</h2><div className="choice-grid">{selected.states.map((item) => <button key={item} className={state === item ? 'is-active' : ''} onClick={() => setState(item)}>{item}</button>)}</div></section>
             <section className="control-section"><h2>画布</h2><div className="choice-grid choice-grid--three">{(['light', 'dark', 'checker'] as Theme[]).map((item) => <button key={item} className={theme === item ? 'is-active' : ''} onClick={() => setTheme(item)}>{item}</button>)}</div></section>
             <section className="control-section"><h2>技术</h2><div className="tag-row">{selected.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></section>
-            <section className="control-section import-note"><h2>导入规范</h2><p>组件在 sample.json 声明 controls 后，工作台会自动生成参数面板、调用 URL 和 JSON 下载。</p></section>
+            <section className="control-section import-note"><h2>导入规范</h2><p>组件在 sample.json 声明 controls 后，工作台会自动生成参数面板、公开运行接口、HTML/React 接入代码和 JSON 下载。</p></section>
           </>}
           {tab === 'code' && <pre className="source-code"><code>{getSampleCode(selected.slug)}</code></pre>}
           {tab === 'readme' && <pre className="readme-text">{getSampleReadme(selected.slug)}</pre>}

@@ -1,0 +1,78 @@
+{
+  "slug": "new-studio-cursor-distortion",
+  "name": "New Studio Cursor Distortion",
+  "description": "在 New Studio 原首屏排版上移动鼠标，流体背景会产生连续的扰动轨迹。",
+  "status": "stable",
+  "category": "motion",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "brushSize",
+      "label": "笔刷尺寸",
+      "type": "range",
+      "default": 30,
+      "min": 8,
+      "max": 90,
+      "step": 2
+    },
+    {
+      "key": "brushStrength",
+      "label": "扰动力度",
+      "type": "range",
+      "default": 2,
+      "min": 0.5,
+      "max": 5,
+      "step": 0.1
+    },
+    {
+      "key": "distortion",
+      "label": "折射强度",
+      "type": "range",
+      "default": 1,
+      "min": 0,
+      "max": 3,
+      "step": 0.1
+    },
+    {
+      "key": "trail",
+      "label": "轨迹长度",
+      "type": "range",
+      "default": 0.8,
+      "min": 0.2,
+      "max": 1.3,
+      "step": 0.05
+    },
+    {
+      "key": "color1",
+      "label": "暗部颜色",
+      "type": "color",
+      "default": "#002651"
+    },
+    {
+      "key": "color2",
+      "label": "亮部颜色",
+      "type": "color",
+      "default": "#9cc7ff"
+    },
+    {
+      "key": "color3",
+      "label": "主蓝色",
+      "type": "color",
+      "default": "#0000f8"
+    }
+  ],
+  "defaults": {
+    "brushSize": 30,
+    "brushStrength": 2,
+    "distortion": 1,
+    "trail": 0.8,
+    "color1": "#002651",
+    "color2": "#9cc7ff",
+    "color3": "#0000f8"
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=new-studio-cursor-distortion&state=default&theme=dark&mode=standalone&p.brushSize=30&p.brushStrength=2&p.distortion=1&p.trail=0.8&p.color1=%23002651&p.color2=%239cc7ff&p.color3=%230000f8",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}

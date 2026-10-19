@@ -86,7 +86,11 @@
 .wild-pixel-field {
   position: relative;
   z-index: 1;
-  height: clamp(380px, 54vh, 700px);
+  width: 100%;
+  height: auto;
+  min-height: 360px;
+  max-height: 700px;
+  aspect-ratio: 16 / 7;
   background: #fff;
   cursor: crosshair;
   touch-action: none;
@@ -144,6 +148,8 @@
 }
 
 .wild-craft--thumbnail .wild-pixel-field {
+  min-height: 0;
+  aspect-ratio: auto;
   height: 210px;
 }
 
@@ -167,5 +173,10 @@
   .wild-craft__meta {
     border-top: 1px solid #dededb;
     border-left: 0;
+  }
+
+  .wild-pixel-field {
+    min-height: 300px;
+    aspect-ratio: 4 / 3;
   }
 }

@@ -50,7 +50,7 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
     let time = 0
     let previous = performance.now()
     let visible = true
-    const pointer = { x: -1000, y: -1000, active: false, downAt: 0 }
+    const pointer = { x: -1000, y: -1000, active: false, downAt: 0, id: -1 }
     const waves: Wave[] = []
 
     const resize = () => {
@@ -74,7 +74,8 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
       const value = Math.sin(warpedX * 5.6 + seed * 1.3 + tick * 0.3) * Math.cos(warpedY * 4.7 - seed * 0.7 + tick * 0.22)
         + Math.sin((warpedX * 1.4 + warpedY * 1.7) * 4.1 - seed + tick * 0.16)
         + Math.sin(warpedY * 9 + seed * 2.1 + warpedX * 3) * 0.5
-      return 0.5 + 0.5 * (value / 2.25)
+        + Math.sin(warpedX * 13 - seed * 1.7) * 0.28
+      return 0.5 + 0.5 * (value / 2.55)
     }
 
     const deposit = (x: number, y: number, amount: number, radius: number) => {
@@ -101,7 +102,16 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
       previous = now
       time += delta * speed
       for (let index = 0; index < heat.length; index += 1) heat[index] *= trail
-      if (pointer.active) deposit(pointer.x, pointer.y, 1, brush)
+      if (pointer.active) {
+        deposit(pointer.x, pointer.y, 1, brush)
+        if (pointer.downAt > 0) {
+          const charge = Math.min(1, (now - pointer.downAt) / 2200)
+          const pulse = 0.88 + Math.sin(now * 0.012) * 0.12
+          const availableRadius = Math.max(cell * 4, Math.min(pointer.x, width - pointer.x, pointer.y, height - pointer.y) * 0.9)
+          const chargeRadius = Math.min(brush * (1.6 + charge * 7.4), availableRadius)
+          deposit(pointer.x, pointer.y, (0.55 + charge * 0.45) * pulse, chargeRadius)
+        }
+      }
 
       for (let index = waves.length - 1; index >= 0; index -= 1) {
         const wave = waves[index]
@@ -110,8 +120,9 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
           waves.splice(index, 1)
           continue
         }
-        const radius = age * Math.hypot(width, height) * 0.78
-        const thickness = cell * (3 + wave.power * 2)
+        const availableRadius = Math.max(cell * 4, Math.min(wave.x, width - wave.x, wave.y, height - wave.y) * 0.9)
+        const radius = Math.min(availableRadius, age / 1.15 * availableRadius)
+        const thickness = Math.min(cell * (3 + wave.power * 2), availableRadius * 0.22)
         const minColumn = Math.max(0, Math.floor((wave.x - radius - thickness) / cell))
         const maxColumn = Math.min(columns - 1, Math.ceil((wave.x + radius + thickness) / cell))
         const minRow = Math.max(0, Math.floor((wave.y - radius - thickness) / cell))
@@ -146,21 +157,22 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
       const pixel = Math.max(1, cell - 1)
       for (let row = 0; row < rows; row += 1) {
         const ny = row * cell / Math.max(1, height)
-        const centralOpening = Math.exp(-(((ny - 0.84) / 0.22) ** 2))
         for (let column = 0; column < columns; column += 1) {
           const nx = column * cell / Math.max(1, width)
           const h = hash(column, row, seed)
-          const cloud = noise(nx, ny, tick) + Math.sin(nx * 10 - ny * 5 + tick) * 0.08
-          const edgeWeight = Math.min(1, Math.abs(nx - 0.54) * 2.8 + 0.22)
-          let value = cloud * density * edgeWeight - centralOpening * (0.38 + (1 - edgeWeight) * 0.45) + (h - 0.5) * 0.2
           const activeHeat = heat[row * columns + column]
-          if (activeHeat > 0.035) value = Math.max(value, 0.95 + activeHeat * 0.25)
+          const region = 0.5 + 0.5 * Math.sin(nx * 2.1 + tick * 0.12 + seed * 0.7) * Math.cos(ny * 1.8 - tick * 0.09 + seed * 0.3)
+          const fadeThreshold = ny <= 0.42 ? 0 : Math.min(1, (ny - 0.42) / 0.34)
+          let value = region > fadeThreshold
+            ? noise(nx, ny, tick) + (h - 0.5) * 0.12 + Math.sin(column * 0.6 + row * 0.8 + tick * 1.7) * 0.045 + (density - 0.72) * 0.35
+            : 0
+          if (activeHeat > 0.035) value = Math.max(value, 0.86 + activeHeat * 0.16)
           if (value < 0.29) continue
           let color = colors[0]
           if (value >= 0.43) color = colors[1]
           if (value >= 0.59) color = colors[2]
           if (value >= 0.76) color = colors[3]
-          if (activeHeat > 0.12) color = neon
+          if (activeHeat > 0.12 && activeHeat < 1.02) color = neon
           context.fillStyle = color
           context.fillRect(column * cell, row * cell, pixel, pixel)
         }
@@ -175,15 +187,25 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
       pointer.active = true
     }
     const onPointerMove = (event: PointerEvent) => setPointer(event.clientX, event.clientY)
-    const onPointerLeave = () => { pointer.active = false }
+    const onPointerLeave = () => { if (pointer.downAt === 0) pointer.active = false }
     const onPointerDown = (event: PointerEvent) => {
       setPointer(event.clientX, event.clientY)
       pointer.downAt = performance.now()
+      pointer.id = event.pointerId
+      canvas.setPointerCapture?.(event.pointerId)
     }
     const onPointerUp = (event: PointerEvent) => {
       setPointer(event.clientX, event.clientY)
       const power = Math.min(2.4, 0.75 + (performance.now() - pointer.downAt) / 700)
       waves.push({ x: pointer.x, y: pointer.y, startedAt: performance.now(), power })
+      pointer.downAt = 0
+      if (pointer.id >= 0 && canvas.hasPointerCapture?.(pointer.id)) canvas.releasePointerCapture(pointer.id)
+      pointer.id = -1
+    }
+    const onPointerCancel = () => {
+      pointer.downAt = 0
+      pointer.id = -1
+      pointer.active = false
     }
 
     resize()
@@ -205,6 +227,7 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
     canvas.addEventListener('pointerleave', onPointerLeave, { passive: true })
     canvas.addEventListener('pointerdown', onPointerDown, { passive: true })
     canvas.addEventListener('pointerup', onPointerUp, { passive: true })
+    canvas.addEventListener('pointercancel', onPointerCancel, { passive: true })
 
     return () => {
       cancelAnimationFrame(frame)
@@ -214,6 +237,7 @@ function PixelField({ parameters }: Pick<SampleProps, 'parameters'>) {
       canvas.removeEventListener('pointerleave', onPointerLeave)
       canvas.removeEventListener('pointerdown', onPointerDown)
       canvas.removeEventListener('pointerup', onPointerUp)
+      canvas.removeEventListener('pointercancel', onPointerCancel)
     }
   }, [parameters])
 
