@@ -1,0 +1,28 @@
+{
+  "slug": "dorian-lods-fluid-hero",
+  "name": "Dorian Lods Fluid Glass",
+  "description": "Dorian Lods 首页原版 WebGL 首屏：流体扭曲字形、虹彩玻璃几何体、鼠标倾斜与滚动转场完整保留。",
+  "category": "motion",
+  "tags": ["Vue", "WebGL", "GLSL", "GSAP", "Pointer"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "dark",
+  "updatedAt": "2026-10-20",
+  "sourcePath": "samples/dorian-lods-fluid-hero/src/index.tsx",
+  "readmePath": "samples/dorian-lods-fluid-hero/README.md",
+  "originalUrl": "https://dorianlods.com/",
+  "interactionHint": "移动鼠标可推动字形流体并倾斜玻璃；向下滚动进入作品列表，悬停项目会触发原站折射与几何体转场。",
+  "controls": [
+    { "key": "rotationSpeed", "label": "玻璃旋转速度", "type": "range", "default": 0.6, "min": 0, "max": 4, "step": 0.05 },
+    { "key": "fluidIOR", "label": "流体折射强度", "type": "range", "default": 0.13, "min": 0, "max": 2, "step": 0.01 },
+    { "key": "fluidRoughness", "label": "折射粗糙度", "type": "range", "default": 0.2, "min": 0, "max": 1, "step": 0.01 },
+    { "key": "fluidSaturation", "label": "流体饱和度", "type": "range", "default": 1.17, "min": 0, "max": 2, "step": 0.01 },
+    { "key": "fluidContrast", "label": "流体对比度", "type": "range", "default": 0.4, "min": -1, "max": 1, "step": 0.01 },
+    { "key": "chromaticAberration", "label": "色散强度", "type": "range", "default": 0.15, "min": 0, "max": 1, "step": 0.01 },
+    { "key": "bloom", "label": "高光辉光", "type": "range", "default": 0.7, "min": 0, "max": 1, "step": 0.01 },
+    { "key": "vignette", "label": "边缘暗角", "type": "range", "default": 0.25, "min": 0, "max": 1, "step": 0.01 },
+    { "key": "warmColor", "label": "背景暖色", "type": "color", "default": "#1f0d05" },
+    { "key": "coolColor", "label": "背景冷色", "type": "color", "default": "#0f001f" }
+  ]
+}
