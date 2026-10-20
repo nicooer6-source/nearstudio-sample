@@ -2,6 +2,90 @@
   "version": 1,
   "components": [
     {
+      "slug": "aeterna-genesis-sand",
+      "name": "Aeterna Genesis Sand",
+      "description": "Aeterna 首页的原版点阵双手：图像粒子会被鼠标推开，并以原站速度与阻尼回到初始位置。",
+      "status": "stable",
+      "category": "motion",
+      "states": [
+        "default"
+      ],
+      "controls": [
+        {
+          "key": "particleSize",
+          "label": "粒子大小",
+          "type": "range",
+          "default": 0.055,
+          "min": 0.01,
+          "max": 0.2,
+          "step": 0.005
+        },
+        {
+          "key": "maxParticles",
+          "label": "粒子数量",
+          "type": "range",
+          "default": 60000,
+          "min": 5000,
+          "max": 100000,
+          "step": 1000
+        },
+        {
+          "key": "mouseRadius",
+          "label": "鼠标范围",
+          "type": "range",
+          "default": 1.2,
+          "min": 0.5,
+          "max": 5,
+          "step": 0.1
+        },
+        {
+          "key": "repulsion",
+          "label": "排斥力度",
+          "type": "range",
+          "default": 0.15,
+          "min": 0.05,
+          "max": 1,
+          "step": 0.05
+        },
+        {
+          "key": "returnSpeed",
+          "label": "回弹速度",
+          "type": "range",
+          "default": 0.01,
+          "min": 0.01,
+          "max": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "friction",
+          "label": "运动阻尼",
+          "type": "range",
+          "default": 0.8,
+          "min": 0.5,
+          "max": 0.99,
+          "step": 0.01
+        },
+        {
+          "key": "background",
+          "label": "背景颜色",
+          "type": "color",
+          "default": "#f5f5f5"
+        }
+      ],
+      "defaults": {
+        "particleSize": 0.055,
+        "maxParticles": 60000,
+        "mouseRadius": 1.2,
+        "repulsion": 0.15,
+        "returnSpeed": 0.01,
+        "friction": 0.8,
+        "background": "#f5f5f5"
+      },
+      "runtimeUrl": "https://nearstudio.art/sample/runner/?component=aeterna-genesis-sand&state=default&theme=light&mode=standalone&p.particleSize=0.055&p.maxParticles=60000&p.mouseRadius=1.2&p.repulsion=0.15&p.returnSpeed=0.01&p.friction=0.8&p.background=%23f5f5f5",
+      "loaderUrl": "https://nearstudio.art/sample/embed.js",
+      "element": "nearstudio-component"
+    },
+    {
       "slug": "ddark-particle-portrait",
       "name": "DDARK Particle Portrait",
       "description": "由肖像像素粒子构成的首屏，鼠标靠近时粒子会被推开，离开后弹性归位。",

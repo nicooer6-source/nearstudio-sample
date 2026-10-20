@@ -1,0 +1,25 @@
+{
+  "slug": "aeterna-genesis-sand",
+  "name": "Aeterna Genesis Sand",
+  "description": "Aeterna 首页的原版点阵双手：图像粒子会被鼠标推开，并以原站速度与阻尼回到初始位置。",
+  "category": "motion",
+  "tags": ["React", "WebGL", "Particles", "Pointer"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "light",
+  "updatedAt": "2026-10-20",
+  "sourcePath": "samples/aeterna-genesis-sand/src/index.tsx",
+  "readmePath": "samples/aeterna-genesis-sand/README.md",
+  "originalUrl": "https://aeterna.framer.ai/",
+  "interactionHint": "在点阵双手上移动鼠标，附近粒子会被推开并按原站的阻尼与回弹速度复位。",
+  "controls": [
+    { "key": "particleSize", "label": "粒子大小", "type": "range", "default": 0.055, "min": 0.01, "max": 0.2, "step": 0.005 },
+    { "key": "maxParticles", "label": "粒子数量", "type": "range", "default": 60000, "min": 5000, "max": 100000, "step": 1000 },
+    { "key": "mouseRadius", "label": "鼠标范围", "type": "range", "default": 1.2, "min": 0.5, "max": 5, "step": 0.1 },
+    { "key": "repulsion", "label": "排斥力度", "type": "range", "default": 0.15, "min": 0.05, "max": 1, "step": 0.05 },
+    { "key": "returnSpeed", "label": "回弹速度", "type": "range", "default": 0.01, "min": 0.01, "max": 0.5, "step": 0.01 },
+    { "key": "friction", "label": "运动阻尼", "type": "range", "default": 0.8, "min": 0.5, "max": 0.99, "step": 0.01 },
+    { "key": "background", "label": "背景颜色", "type": "color", "default": "#f5f5f5" }
+  ]
+}
