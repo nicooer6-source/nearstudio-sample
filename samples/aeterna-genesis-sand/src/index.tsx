@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { SampleProps } from '../../../src/types'
 import './style.css'
 
-const runtimeRoot = `${import.meta.env.BASE_URL}assets/aeterna-genesis-v3-8l8i9i/`
+const runtimeRoot = `${import.meta.env.BASE_URL}assets/aeterna-genesis-v3-js-10314a/`
 
 export default function AeternaGenesisSand({ mode, parameters }: SampleProps) {
   const frameRef = useRef<HTMLIFrameElement>(null)

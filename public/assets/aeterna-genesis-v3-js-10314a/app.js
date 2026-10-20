@@ -1,5 +1,5 @@
-import { c as jsx, n as initReactDom, r as createRoot } from './react.D20wc1Tc.mjs'
-import { n as initSand, t as Sand } from './Sand.DuQ_Qcwl.mjs'
+import { c as jsx, n as initReactDom, r as createRoot } from './react.D20wc1Tc.js'
+import { n as initSand, t as Sand } from './Sand.DuQ_Qcwl.js'
 
 initSand()
 initReactDom()
