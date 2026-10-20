@@ -3,6 +3,7 @@ import type { SampleProps } from '../../../src/types'
 import './style.css'
 
 const runtimeRoot = `${import.meta.env.BASE_URL}assets/dorian-lods-source-d15719b/`
+const runtimePage = `${runtimeRoot}index.html`
 
 export default function DorianLodsFluidHero({ mode, parameters }: SampleProps) {
   const frameRef = useRef<HTMLIFrameElement>(null)
@@ -31,7 +32,7 @@ export default function DorianLodsFluidHero({ mode, parameters }: SampleProps) {
     <div className="dorian-lods-runtime">
       <iframe
         ref={frameRef}
-        src={runtimeRoot}
+        src={runtimePage}
         title="Dorian Lods 原版流体玻璃 WebGL 首屏"
         onLoad={sendParameters}
         sandbox="allow-scripts allow-same-origin"

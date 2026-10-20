@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      if (window.location.pathname.endsWith('/index.html')) {
+        const runtimePath = window.location.pathname.slice(0, -'index.html'.length)
+        window.history.replaceState(window.history.state, '', `${runtimePath}${window.location.search}${window.location.hash}`)
+      }
+    </script>
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="description" content="a Paris-based French Senior Creative Developer & Design Engineer specializing in Generative AI, real-time interactivity, and Immersive WebGL experiences." />
