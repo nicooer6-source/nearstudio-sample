@@ -20,7 +20,7 @@ export default function AeternaGenesisSand({ mode, parameters }: SampleProps) {
     return (
       <figure className="aeterna-genesis aeterna-genesis--thumbnail">
         <img
-          src={`${runtimeRoot}preview-hero.png`}
+          src={`${runtimeRoot}preview-hero-component.png`}
           alt="Aeterna 点阵双手互动首屏"
         />
       </figure>
