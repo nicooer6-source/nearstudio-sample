@@ -1,0 +1,1 @@
+function a(n){for(;n>Math.PI;)n-=Math.PI*2;for(;n<-Math.PI;)n+=Math.PI*2;return n}function e(n){return n=Math.max(0,Math.min(1,n)),n*n*(3-2*n)}function r(n,t,h){return Math.max(t,Math.min(h,n))}export{r as c,a as n,e as s};

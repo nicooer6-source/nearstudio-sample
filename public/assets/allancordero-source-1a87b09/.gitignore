@@ -1,0 +1,5 @@
+.DS_Store
+verify-report.json
+deploy/
+*.log
+**/index_raw.html

@@ -1,0 +1,1 @@
+import{m as a}from"./snap.CsRsbxZk.js";import{m}from"./i18n.LgdUcp_e.js";import{a as o}from"./analytics.ujJXTCv4.js";import"./index.CzGW6FVa.js";document.addEventListener("astro:page-load",()=>{o(),m(),a()});

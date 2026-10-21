@@ -1,0 +1,1 @@
+const e=()=>window.gtag;function n(t,a){try{e()?.("event",t,a)}catch{}}function o(){n("page_view",{page_title:document.title,page_location:location.href,page_path:location.pathname})}export{o as a,n as t};

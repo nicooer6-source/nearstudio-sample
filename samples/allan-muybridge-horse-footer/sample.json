@@ -1,0 +1,27 @@
+{
+  "slug": "allan-muybridge-horse-footer",
+  "name": "Allan Muybridge Horse Footer",
+  "description": "Allan Cordero 页脚屏：Muybridge 奔马序列转为字符网格，并保留邮箱、社交、本地时钟和品牌签名。",
+  "category": "motion",
+  "tags": ["Canvas", "ASCII", "Pointer", "Footer"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "light",
+  "updatedAt": "2026-10-21",
+  "sourcePath": "samples/allan-muybridge-horse-footer/src/index.tsx",
+  "readmePath": "samples/allan-muybridge-horse-footer/README.md",
+  "originalUrl": "https://allancordero.site/",
+  "interactionHint": "移动鼠标经过奔马，字符会产生局部湍流、膨胀与延迟回落；下方时钟保持实时更新。",
+  "controls": [
+    { "key": "cellSize", "label": "字符密度", "type": "range", "default": 6, "min": 3, "max": 12, "step": 0.5, "unit": "px" },
+    { "key": "motionSpeed", "label": "奔马速度", "type": "range", "default": 1, "min": 0.25, "max": 2.5, "step": 0.05 },
+    { "key": "hoverRadius", "label": "扰动范围", "type": "range", "default": 30, "min": 8, "max": 80, "step": 1 },
+    { "key": "hoverStrength", "label": "扰动强度", "type": "range", "default": 7, "min": 0, "max": 18, "step": 0.5 },
+    { "key": "sceneScale", "label": "场景缩放", "type": "range", "default": 1, "min": 0.7, "max": 1.35, "step": 0.01 },
+    { "key": "contrast", "label": "画面对比", "type": "range", "default": 1, "min": 0.6, "max": 1.8, "step": 0.05 },
+    { "key": "backgroundColor", "label": "纸张颜色", "type": "color", "default": "#f4f4f2" },
+    { "key": "inkColor", "label": "字符颜色", "type": "color", "default": "#0a0a0a" },
+    { "key": "accentColor", "label": "时钟强调色", "type": "color", "default": "#60ce8b" }
+  ]
+}

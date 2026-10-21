@@ -1,0 +1,114 @@
+{
+  "slug": "allan-pixel-portrait",
+  "name": "Allan Pixel Portrait",
+  "description": "Allan Cordero About 屏：视频帧实时转为荧光绿色点阵，背景 HUD 像素节点和颗粒质感完整保留。",
+  "status": "stable",
+  "category": "motion",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "cellFar",
+      "label": "远景点阵",
+      "type": "range",
+      "default": 7,
+      "min": 3,
+      "max": 14,
+      "step": 0.5,
+      "unit": "px"
+    },
+    {
+      "key": "cellNear",
+      "label": "近景点阵",
+      "type": "range",
+      "default": 3.5,
+      "min": 1.5,
+      "max": 8,
+      "step": 0.25,
+      "unit": "px"
+    },
+    {
+      "key": "pointerRange",
+      "label": "指针范围",
+      "type": "range",
+      "default": 420,
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "key": "pull",
+      "label": "拉伸力度",
+      "type": "range",
+      "default": 2,
+      "min": 0.2,
+      "max": 6,
+      "step": 0.1
+    },
+    {
+      "key": "portraitContrast",
+      "label": "人像对比",
+      "type": "range",
+      "default": 2.2,
+      "min": 0.8,
+      "max": 4,
+      "step": 0.1
+    },
+    {
+      "key": "dotSize",
+      "label": "点阵尺寸",
+      "type": "range",
+      "default": 0.5,
+      "min": 0.2,
+      "max": 1,
+      "step": 0.05
+    },
+    {
+      "key": "sceneScale",
+      "label": "场景缩放",
+      "type": "range",
+      "default": 1,
+      "min": 0.7,
+      "max": 1.35,
+      "step": 0.01
+    },
+    {
+      "key": "grain",
+      "label": "颗粒强度",
+      "type": "range",
+      "default": 0.05,
+      "min": 0,
+      "max": 0.2,
+      "step": 0.01
+    },
+    {
+      "key": "accentColor",
+      "label": "点阵颜色",
+      "type": "color",
+      "default": "#60ce8b"
+    },
+    {
+      "key": "backgroundColor",
+      "label": "背景颜色",
+      "type": "color",
+      "default": "#0a0a0a"
+    }
+  ],
+  "defaults": {
+    "cellFar": 7,
+    "cellNear": 3.5,
+    "pointerRange": 420,
+    "pull": 2,
+    "portraitContrast": 2.2,
+    "dotSize": 0.5,
+    "sceneScale": 1,
+    "grain": 0.05,
+    "accentColor": "#60ce8b",
+    "backgroundColor": "#0a0a0a"
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=allan-pixel-portrait&state=default&theme=dark&mode=standalone&p.cellFar=7&p.cellNear=3.5&p.pointerRange=420&p.pull=2&p.portraitContrast=2.2&p.dotSize=0.5&p.sceneScale=1&p.grain=0.05&p.accentColor=%2360ce8b&p.backgroundColor=%230a0a0a",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}

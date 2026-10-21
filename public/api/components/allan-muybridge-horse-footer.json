@@ -1,0 +1,99 @@
+{
+  "slug": "allan-muybridge-horse-footer",
+  "name": "Allan Muybridge Horse Footer",
+  "description": "Allan Cordero 页脚屏：Muybridge 奔马序列转为字符网格，并保留邮箱、社交、本地时钟和品牌签名。",
+  "status": "stable",
+  "category": "motion",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "cellSize",
+      "label": "字符密度",
+      "type": "range",
+      "default": 6,
+      "min": 3,
+      "max": 12,
+      "step": 0.5,
+      "unit": "px"
+    },
+    {
+      "key": "motionSpeed",
+      "label": "奔马速度",
+      "type": "range",
+      "default": 1,
+      "min": 0.25,
+      "max": 2.5,
+      "step": 0.05
+    },
+    {
+      "key": "hoverRadius",
+      "label": "扰动范围",
+      "type": "range",
+      "default": 30,
+      "min": 8,
+      "max": 80,
+      "step": 1
+    },
+    {
+      "key": "hoverStrength",
+      "label": "扰动强度",
+      "type": "range",
+      "default": 7,
+      "min": 0,
+      "max": 18,
+      "step": 0.5
+    },
+    {
+      "key": "sceneScale",
+      "label": "场景缩放",
+      "type": "range",
+      "default": 1,
+      "min": 0.7,
+      "max": 1.35,
+      "step": 0.01
+    },
+    {
+      "key": "contrast",
+      "label": "画面对比",
+      "type": "range",
+      "default": 1,
+      "min": 0.6,
+      "max": 1.8,
+      "step": 0.05
+    },
+    {
+      "key": "backgroundColor",
+      "label": "纸张颜色",
+      "type": "color",
+      "default": "#f4f4f2"
+    },
+    {
+      "key": "inkColor",
+      "label": "字符颜色",
+      "type": "color",
+      "default": "#0a0a0a"
+    },
+    {
+      "key": "accentColor",
+      "label": "时钟强调色",
+      "type": "color",
+      "default": "#60ce8b"
+    }
+  ],
+  "defaults": {
+    "cellSize": 6,
+    "motionSpeed": 1,
+    "hoverRadius": 30,
+    "hoverStrength": 7,
+    "sceneScale": 1,
+    "contrast": 1,
+    "backgroundColor": "#f4f4f2",
+    "inkColor": "#0a0a0a",
+    "accentColor": "#60ce8b"
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=allan-muybridge-horse-footer&state=default&theme=light&mode=standalone&p.cellSize=6&p.motionSpeed=1&p.hoverRadius=30&p.hoverStrength=7&p.sceneScale=1&p.contrast=1&p.backgroundColor=%23f4f4f2&p.inkColor=%230a0a0a&p.accentColor=%2360ce8b",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}
