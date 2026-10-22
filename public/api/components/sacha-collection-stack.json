@@ -1,0 +1,118 @@
+{
+  "slug": "sacha-collection-stack",
+  "name": "Sacha Collection Stack",
+  "description": "Sacha Haouzi 作品卡片：三张内容图以弹性曲线叠放，悬停或聚焦时展开、反向旋转并加深阴影。",
+  "status": "stable",
+  "category": "interaction",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "sceneScale",
+      "label": "卡片缩放",
+      "type": "range",
+      "default": 1,
+      "min": 0.65,
+      "max": 1.2,
+      "step": 0.01
+    },
+    {
+      "key": "idleSpread",
+      "label": "静止展开",
+      "type": "range",
+      "default": 10,
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "key": "hoverSpread",
+      "label": "悬停展开",
+      "type": "range",
+      "default": 20,
+      "min": 5,
+      "max": 32,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "key": "verticalFan",
+      "label": "垂直错位",
+      "type": "range",
+      "default": 5,
+      "min": 0,
+      "max": 16,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "key": "idleRotation",
+      "label": "静止旋转",
+      "type": "range",
+      "default": 5,
+      "min": -12,
+      "max": 12,
+      "step": 0.5,
+      "unit": "°"
+    },
+    {
+      "key": "hoverRotation",
+      "label": "悬停旋转",
+      "type": "range",
+      "default": -4,
+      "min": -12,
+      "max": 12,
+      "step": 0.5,
+      "unit": "°"
+    },
+    {
+      "key": "duration",
+      "label": "弹性速度",
+      "type": "range",
+      "default": 0.9,
+      "min": 0.2,
+      "max": 1.8,
+      "step": 0.05,
+      "unit": "s"
+    },
+    {
+      "key": "radius",
+      "label": "卡片圆角",
+      "type": "range",
+      "default": 16,
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "key": "surfaceColor",
+      "label": "卡片底色",
+      "type": "color",
+      "default": "#f0f0f0"
+    },
+    {
+      "key": "textColor",
+      "label": "文字颜色",
+      "type": "color",
+      "default": "#111111"
+    }
+  ],
+  "defaults": {
+    "sceneScale": 1,
+    "idleSpread": 10,
+    "hoverSpread": 20,
+    "verticalFan": 5,
+    "idleRotation": 5,
+    "hoverRotation": -4,
+    "duration": 0.9,
+    "radius": 16,
+    "surfaceColor": "#f0f0f0",
+    "textColor": "#111111"
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=sacha-collection-stack&state=default&theme=light&mode=standalone&p.sceneScale=1&p.idleSpread=10&p.hoverSpread=20&p.verticalFan=5&p.idleRotation=5&p.hoverRotation=-4&p.duration=0.9&p.radius=16&p.surfaceColor=%23f0f0f0&p.textColor=%23111111",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}
