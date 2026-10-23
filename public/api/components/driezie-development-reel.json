@@ -1,0 +1,88 @@
+{
+  "slug": "driezie-development-reel",
+  "name": "Driezie Development Reel",
+  "description": "Driezie Studio 的在开发项目带：高清项目卡片可按住拖拽、按钮切换、键盘控制并无缝循环。",
+  "status": "stable",
+  "category": "interaction",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "cardWidth",
+      "label": "卡片宽度",
+      "type": "range",
+      "default": 469,
+      "min": 280,
+      "max": 680,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "key": "gap",
+      "label": "卡片间距",
+      "type": "range",
+      "default": 32,
+      "min": 0,
+      "max": 72,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "key": "motionDuration",
+      "label": "切换速度",
+      "type": "range",
+      "default": 0.65,
+      "min": 0.15,
+      "max": 1.5,
+      "step": 0.05,
+      "unit": "s"
+    },
+    {
+      "key": "dragMomentum",
+      "label": "拖拽惯性",
+      "type": "range",
+      "default": 150,
+      "min": 0,
+      "max": 320,
+      "step": 10
+    },
+    {
+      "key": "paperColor",
+      "label": "纸张底色",
+      "type": "color",
+      "default": "#f4f2ed"
+    },
+    {
+      "key": "inkColor",
+      "label": "文字颜色",
+      "type": "color",
+      "default": "#18191a"
+    },
+    {
+      "key": "accentColor",
+      "label": "强调颜色",
+      "type": "color",
+      "default": "#df9568"
+    },
+    {
+      "key": "showContext",
+      "label": "显示上下文",
+      "type": "toggle",
+      "default": true
+    }
+  ],
+  "defaults": {
+    "cardWidth": 469,
+    "gap": 32,
+    "motionDuration": 0.65,
+    "dragMomentum": 150,
+    "paperColor": "#f4f2ed",
+    "inkColor": "#18191a",
+    "accentColor": "#df9568",
+    "showContext": true
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=driezie-development-reel&state=default&theme=light&mode=standalone&p.cardWidth=469&p.gap=32&p.motionDuration=0.65&p.dragMomentum=150&p.paperColor=%23f4f2ed&p.inkColor=%2318191a&p.accentColor=%23df9568&p.showContext=true",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "driezie-development-reel",
+  "name": "Driezie Development Reel",
+  "description": "Driezie Studio 的在开发项目带：高清项目卡片可按住拖拽、按钮切换、键盘控制并无缝循环。",
+  "category": "interaction",
+  "tags": ["Carousel", "Drag", "Portfolio", "Keyboard"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "light",
+  "updatedAt": "2026-10-23",
+  "sourcePath": "samples/driezie-development-reel/src/index.tsx",
+  "readmePath": "samples/driezie-development-reel/README.md",
+  "originalUrl": "https://driezie.studio/",
+  "interactionHint": "按住项目带左右拖拽，或使用右上角按钮与键盘方向键切换；组件会连续循环。",
+  "controls": [
+    { "key": "cardWidth", "label": "卡片宽度", "type": "range", "default": 469, "min": 280, "max": 680, "step": 1, "unit": "px" },
+    { "key": "gap", "label": "卡片间距", "type": "range", "default": 32, "min": 0, "max": 72, "step": 1, "unit": "px" },
+    { "key": "motionDuration", "label": "切换速度", "type": "range", "default": 0.65, "min": 0.15, "max": 1.5, "step": 0.05, "unit": "s" },
+    { "key": "dragMomentum", "label": "拖拽惯性", "type": "range", "default": 150, "min": 0, "max": 320, "step": 10 },
+    { "key": "paperColor", "label": "纸张底色", "type": "color", "default": "#f4f2ed" },
+    { "key": "inkColor", "label": "文字颜色", "type": "color", "default": "#18191a" },
+    { "key": "accentColor", "label": "强调颜色", "type": "color", "default": "#df9568" },
+    { "key": "showContext", "label": "显示上下文", "type": "toggle", "default": true }
+  ]
+}
