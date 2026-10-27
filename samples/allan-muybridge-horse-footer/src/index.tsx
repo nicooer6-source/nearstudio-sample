@@ -17,5 +17,5 @@ export default function AllanMuybridgeHorseFooter({ mode, parameters }: SamplePr
     return <figure className="allan-stage-runtime allan-stage-runtime--thumbnail"><img src={`${runtimeRoot}preview-horse.png`} alt="Allan Cordero Muybridge 字符奔马页脚" /></figure>
   }
 
-  return <div className="allan-stage-runtime"><iframe ref={frameRef} src={`${runtimeRoot}horse.html`} title="Allan Cordero Muybridge 字符奔马页脚" onLoad={sendParameters} sandbox="allow-scripts allow-same-origin" /></div>
+  return <div className="allan-stage-runtime"><iframe ref={frameRef} src={`${runtimeRoot}horse.html?v=20261027-scroll-fix`} title="Allan Cordero Muybridge 字符奔马页脚" onLoad={sendParameters} sandbox="allow-scripts allow-same-origin" /></div>
 }
