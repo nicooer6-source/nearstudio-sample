@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { getSampleCode, getSampleReadme, samples } from '../catalog'
 import { appendParameters, defaultParameters } from '../parameters'
 import type { SampleControl, SampleManifest, SampleParameterValue, SampleParameterValues } from '../types'
+import { AccessSettings } from './AccessSettings'
 import './gallery.css'
 
 type Viewport = 'desktop' | 'tablet' | 'mobile'
@@ -51,6 +52,8 @@ export function GalleryApp() {
   const [reloadKey, setReloadKey] = useState(0)
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [inspectorOpen, setInspectorOpen] = useState(true)
+  const [accessAdmin, setAccessAdmin] = useState(false)
+  const [accessSettingsOpen, setAccessSettingsOpen] = useState(false)
   const [parameterSets, setParameterSets] = useState<Record<string, SampleParameterValues>>(() =>
     Object.fromEntries(samples.map((sample) => [sample.slug, defaultParameters(sample.controls)])),
   )
@@ -83,6 +86,13 @@ export function GalleryApp() {
     const onPopState = () => setSelectedSlug(initialSlug())
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
+  }, [])
+
+  useEffect(() => {
+    fetch('/sample/admin-api/session', { credentials: 'same-origin' })
+      .then((response) => response.ok ? response.json() : null)
+      .then((payload: { admin?: boolean } | null) => setAccessAdmin(Boolean(payload?.admin)))
+      .catch(() => setAccessAdmin(false))
   }, [])
 
   if (!selected) return <main className="studio-empty">还没有组件。通过 mirror 导入第一个组件后，它会自动出现在这里。</main>
@@ -128,7 +138,7 @@ export function GalleryApp() {
         </div>
         <div className="studio-topbar-actions">
           <button onClick={() => setSidebarOpen((open) => !open)} aria-label="切换组件列表">组件</button><button onClick={reset}>重置</button>
-          <a href={sourceUrl} target="_blank" rel="noreferrer">源码 ↗</a><button onClick={() => setInspectorOpen((open) => !open)} aria-label="切换设置面板">设置</button>
+          <a href={sourceUrl} target="_blank" rel="noreferrer">源码 ↗</a>{accessAdmin && <button onClick={() => setAccessSettingsOpen(true)}>访问设置</button>}<button onClick={() => setInspectorOpen((open) => !open)} aria-label="切换设置面板">设置</button>
         </div>
       </header>
 
@@ -188,6 +198,7 @@ export function GalleryApp() {
           {tab === 'readme' && <pre className="readme-text">{getSampleReadme(selected.slug)}</pre>}
         </div>
       </aside>
+      {accessSettingsOpen && <AccessSettings onClose={() => setAccessSettingsOpen(false)} />}
     </main>
   )
 }
