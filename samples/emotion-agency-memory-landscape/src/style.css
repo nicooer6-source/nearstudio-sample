@@ -1,0 +1,116 @@
+.emotion-landscape {
+  --emotion-text: #fffaf7;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #b8a5ef;
+  color: var(--emotion-text);
+  cursor: crosshair;
+}
+
+.emotion-landscape__canvas,
+.emotion-landscape__canvas canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.emotion-landscape::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 34%, transparent 0 30%, rgb(31 6 57 / .13) 82%),
+    linear-gradient(to bottom, rgb(255 255 255 / .06), rgb(55 13 79 / .12));
+  mix-blend-mode: multiply;
+}
+
+.emotion-landscape__copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  text-transform: uppercase;
+  text-shadow: 0 1px 16px rgb(53 19 78 / .25);
+}
+
+.emotion-landscape__eyebrow {
+  position: absolute;
+  left: clamp(24px, 3.4vw, 68px);
+  top: 39%;
+  margin: 0;
+  font: 600 clamp(10px, .78vw, 16px)/1.12 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: -.04em;
+}
+
+.emotion-landscape h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  line-height: .86;
+  letter-spacing: -.055em;
+}
+
+.emotion-landscape h1 em {
+  position: absolute;
+  left: clamp(24px, 3.4vw, 68px);
+  top: 49%;
+  font-size: clamp(58px, 7vw, 132px);
+  font-weight: 400;
+  text-transform: none;
+}
+
+.emotion-landscape h1 span {
+  position: absolute;
+  left: 27%;
+  bottom: 1.4%;
+  font-size: clamp(45px, 5.6vw, 108px);
+  white-space: nowrap;
+}
+
+.emotion-landscape__orb {
+  position: absolute;
+  z-index: 3;
+  right: 2.5%;
+  bottom: 4.5%;
+  width: clamp(34px, 4.3vw, 82px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 34% 28%, #fff 0 5%, #d9c6ff 14%, #8d6fd4 47%, #a051ca 68%, #47306d 100%);
+  box-shadow: 0 8px 30px rgb(71 25 102 / .35), inset -8px -10px 18px rgb(52 16 76 / .35);
+  opacity: .88;
+}
+
+.emotion-landscape--thumbnail {
+  min-height: 100%;
+  margin: 0;
+  background: #b8a5ef;
+}
+
+.emotion-landscape--thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 760px) {
+  .emotion-landscape__eyebrow { top: 30%; }
+  .emotion-landscape h1 em { top: 40%; }
+  .emotion-landscape h1 span {
+    left: 8%;
+    bottom: 7%;
+    font-size: clamp(40px, 12vw, 72px);
+    white-space: normal;
+  }
+}

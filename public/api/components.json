@@ -688,6 +688,108 @@
       "element": "nearstudio-component"
     },
     {
+      "slug": "emotion-agency-memory-landscape",
+      "name": "Emotion Memory Landscape",
+      "description": "Emotion Agency 首页主视觉：紫色低多边形湖岸、漂浮碎片、粒子环和随鼠标变化的空间视差。",
+      "status": "stable",
+      "category": "motion",
+      "states": [
+        "default"
+      ],
+      "controls": [
+        {
+          "key": "particleCount",
+          "label": "粒子数量",
+          "type": "range",
+          "default": 4200,
+          "min": 800,
+          "max": 9000,
+          "step": 200
+        },
+        {
+          "key": "driftSpeed",
+          "label": "漂浮速度",
+          "type": "range",
+          "default": 0.65,
+          "min": 0,
+          "max": 2.5,
+          "step": 0.05
+        },
+        {
+          "key": "parallax",
+          "label": "鼠标视差",
+          "type": "range",
+          "default": 0.7,
+          "min": 0,
+          "max": 2,
+          "step": 0.05
+        },
+        {
+          "key": "waterWave",
+          "label": "水面波动",
+          "type": "range",
+          "default": 0.55,
+          "min": 0,
+          "max": 1.5,
+          "step": 0.05
+        },
+        {
+          "key": "atmosphere",
+          "label": "雾化强度",
+          "type": "range",
+          "default": 0.72,
+          "min": 0,
+          "max": 1,
+          "step": 0.02
+        },
+        {
+          "key": "backgroundColor",
+          "label": "天空颜色",
+          "type": "color",
+          "default": "#b8a5ef"
+        },
+        {
+          "key": "accentColor",
+          "label": "粒子颜色",
+          "type": "color",
+          "default": "#bc4dff"
+        },
+        {
+          "key": "groundColor",
+          "label": "地面颜色",
+          "type": "color",
+          "default": "#5f2d81"
+        },
+        {
+          "key": "textColor",
+          "label": "文字颜色",
+          "type": "color",
+          "default": "#fffaf7"
+        },
+        {
+          "key": "showCopy",
+          "label": "显示原站文案",
+          "type": "toggle",
+          "default": true
+        }
+      ],
+      "defaults": {
+        "particleCount": 4200,
+        "driftSpeed": 0.65,
+        "parallax": 0.7,
+        "waterWave": 0.55,
+        "atmosphere": 0.72,
+        "backgroundColor": "#b8a5ef",
+        "accentColor": "#bc4dff",
+        "groundColor": "#5f2d81",
+        "textColor": "#fffaf7",
+        "showCopy": true
+      },
+      "runtimeUrl": "https://nearstudio.art/sample/runner/?component=emotion-agency-memory-landscape&state=default&theme=dark&mode=standalone&p.particleCount=4200&p.driftSpeed=0.65&p.parallax=0.7&p.waterWave=0.55&p.atmosphere=0.72&p.backgroundColor=%23b8a5ef&p.accentColor=%23bc4dff&p.groundColor=%235f2d81&p.textColor=%23fffaf7&p.showCopy=true",
+      "loaderUrl": "https://nearstudio.art/sample/embed.js",
+      "element": "nearstudio-component"
+    },
+    {
       "slug": "shaders-ink-flow-cursor",
       "name": "Ink Flow Cursor",
       "description": "蓝紫流体跟随鼠标移动生成，在离开后自然扩散并消散。",
