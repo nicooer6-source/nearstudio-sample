@@ -1,0 +1,20 @@
+{
+  "slug": "noomo-showcase-crystal-space",
+  "name": "Noomo Showcase Crystal Space",
+  "description": "Noomo Showcase 首页完整 WebGL 运行镜像：保留漂浮晶体、项目场景、原站文案按钮，以及鼠标和滚动切换交互。",
+  "category": "interaction",
+  "tags": ["Nuxt", "Three.js", "WebGL", "3D", "Scroll"],
+  "status": "stable",
+  "states": ["default"],
+  "thumbnailState": "default",
+  "thumbnailTheme": "dark",
+  "updatedAt": "2026-10-28",
+  "sourcePath": "samples/noomo-showcase-crystal-space/src/index.tsx",
+  "readmePath": "samples/noomo-showcase-crystal-space/README.md",
+  "originalUrl": "https://showcase.noomoagency.com/",
+  "interactionHint": "点击 GET STARTED 进入原站 3D 主视觉；移动鼠标并滚动可切换不同项目、晶体与场景。",
+  "controls": [
+    { "key": "audio", "label": "启用原站声音", "type": "toggle", "default": false },
+    { "key": "showNavigation", "label": "显示顶部导航", "type": "toggle", "default": false }
+  ]
+}

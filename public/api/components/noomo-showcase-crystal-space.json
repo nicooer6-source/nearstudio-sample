@@ -1,0 +1,31 @@
+{
+  "slug": "noomo-showcase-crystal-space",
+  "name": "Noomo Showcase Crystal Space",
+  "description": "Noomo Showcase 首页完整 WebGL 运行镜像：保留漂浮晶体、项目场景、原站文案按钮，以及鼠标和滚动切换交互。",
+  "status": "stable",
+  "category": "interaction",
+  "states": [
+    "default"
+  ],
+  "controls": [
+    {
+      "key": "audio",
+      "label": "启用原站声音",
+      "type": "toggle",
+      "default": false
+    },
+    {
+      "key": "showNavigation",
+      "label": "显示顶部导航",
+      "type": "toggle",
+      "default": false
+    }
+  ],
+  "defaults": {
+    "audio": false,
+    "showNavigation": false
+  },
+  "runtimeUrl": "https://nearstudio.art/sample/runner/?component=noomo-showcase-crystal-space&state=default&theme=dark&mode=standalone&p.audio=false&p.showNavigation=false",
+  "loaderUrl": "https://nearstudio.art/sample/embed.js",
+  "element": "nearstudio-component"
+}
