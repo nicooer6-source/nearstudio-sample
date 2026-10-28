@@ -690,112 +690,38 @@
     {
       "slug": "emotion-agency-memory-landscape",
       "name": "Emotion Memory Landscape",
-      "description": "Emotion Agency 首页主视觉：原站 e 字粒子、低多边形山体、草岸、水面反射与鼠标扰动。",
+      "description": "Emotion Agency 首页完整 WebGL 运行镜像：保留粒子字母、山体、草岸、水面反射、原站文案与鼠标/滚动交互。",
       "status": "stable",
-      "category": "motion",
+      "category": "interaction",
       "states": [
         "default"
       ],
       "controls": [
         {
-          "key": "particleCount",
-          "label": "粒子数量",
-          "type": "range",
-          "default": 5800,
-          "min": 1600,
-          "max": 9000,
-          "step": 200
-        },
-        {
-          "key": "driftSpeed",
-          "label": "漂浮速度",
-          "type": "range",
-          "default": 0.72,
-          "min": 0,
-          "max": 2.5,
-          "step": 0.05
-        },
-        {
-          "key": "interactionStrength",
-          "label": "鼠标扰动",
-          "type": "range",
-          "default": 1,
-          "min": 0,
-          "max": 2.5,
-          "step": 0.05
-        },
-        {
-          "key": "parallax",
-          "label": "鼠标视差",
-          "type": "range",
-          "default": 0.62,
-          "min": 0,
-          "max": 2,
-          "step": 0.05
-        },
-        {
-          "key": "waterWave",
-          "label": "水面波动",
-          "type": "range",
-          "default": 0.58,
-          "min": 0,
-          "max": 1.5,
-          "step": 0.05
-        },
-        {
-          "key": "atmosphere",
-          "label": "雾化强度",
-          "type": "range",
-          "default": 0.72,
-          "min": 0,
-          "max": 1,
-          "step": 0.02
-        },
-        {
-          "key": "backgroundColor",
-          "label": "天空颜色",
-          "type": "color",
-          "default": "#b8a5ef"
-        },
-        {
-          "key": "accentColor",
-          "label": "粒子颜色",
-          "type": "color",
-          "default": "#bc4dff"
-        },
-        {
-          "key": "groundColor",
-          "label": "地面颜色",
-          "type": "color",
-          "default": "#5f2d81"
-        },
-        {
-          "key": "textColor",
-          "label": "文字颜色",
-          "type": "color",
-          "default": "#fffaf7"
-        },
-        {
-          "key": "showCopy",
-          "label": "显示原站文案",
+          "key": "autoEnter",
+          "label": "自动进入主视觉",
           "type": "toggle",
           "default": true
+        },
+        {
+          "key": "audio",
+          "label": "进入时启用声音",
+          "type": "toggle",
+          "default": false
+        },
+        {
+          "key": "showNavigation",
+          "label": "显示顶部导航",
+          "type": "toggle",
+          "default": false
         }
       ],
       "defaults": {
-        "particleCount": 5800,
-        "driftSpeed": 0.72,
-        "interactionStrength": 1,
-        "parallax": 0.62,
-        "waterWave": 0.58,
-        "atmosphere": 0.72,
-        "backgroundColor": "#b8a5ef",
-        "accentColor": "#bc4dff",
-        "groundColor": "#5f2d81",
-        "textColor": "#fffaf7",
-        "showCopy": true
+        "autoEnter": true,
+        "audio": false,
+        "showNavigation": false
       },
-      "runtimeUrl": "https://nearstudio.art/sample/runner/?component=emotion-agency-memory-landscape&state=default&theme=dark&mode=standalone&p.particleCount=5800&p.driftSpeed=0.72&p.interactionStrength=1&p.parallax=0.62&p.waterWave=0.58&p.atmosphere=0.72&p.backgroundColor=%23b8a5ef&p.accentColor=%23bc4dff&p.groundColor=%235f2d81&p.textColor=%23fffaf7&p.showCopy=true",
+      "runtimeUrl": "https://nearstudio.art/sample/runner/?component=emotion-agency-memory-landscape&state=default&theme=dark&mode=standalone&p.autoEnter=true&p.audio=false&p.showNavigation=false",
       "loaderUrl": "https://nearstudio.art/sample/embed.js",
       "element": "nearstudio-component"
     },

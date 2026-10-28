@@ -1,14 +1,20 @@
 # Emotion Memory Landscape
 
-提取自 [Emotion Agency](https://emotion-agency.com/) 首页首屏。组件使用原站 `e.glb` 与 `mountain.glb` 资产，保留 e 字粒子、低多边形远山、密集草岸、水面倒影、漂浮碎片和原页面标题排版；入口页和顶部导航不在组件内。
+组件使用经过原站核对的 [Emotion Agency](https://emotion-agency.com/) 首页静态运行镜像。它保留 Nuxt、Three.js、WebGL worker、模型、贴图、粒子、低多边形山体、草岸、水面反射、原站文案和鼠标/滚动交互；Sample 预览默认隐藏顶部导航并自动选择“Enter without audio”。
+
+## 参数
+
+- `autoEnter`：资源加载完成后自动进入首页主视觉。
+- `audio`：自动进入时选择带声音入口。
+- `showNavigation`：显示或隐藏原站顶部导航。
 
 ## 使用
 
-在 Sample 详情页调整参数后，可复制页面提供的 Runner URL 或 Embed 代码。参数会写入 URL，其他项目可直接加载同一效果。
+在 Sample 详情页调整参数后，可复制 Runner URL、HTML 接口或 React iframe 代码。运行文件位于 Sample 自己的永久资源路径，不依赖会过期的临时镜像地址。
 
-## 交互
+## 校验
 
-- 移动鼠标：镜头产生分层视差，靠近指针的 e 字粒子被推开后回弹。
-- 按住鼠标或触摸：扩大粒子扰动范围和力度。
-- 持续动画：粒子轻微漂移、空气碎片下落、水面反射起伏。
-- `prefers-reduced-motion`：自动降低运动幅度。
+- 欢迎页会在所有模型、纹理和 worker 加载完成后出现。
+- 主视觉包含 10 个 WebGL canvas，持续动画正常。
+- 点击、鼠标移动和滚动会改变粒子、相机及场景状态。
+- 原站首屏文案排版保留；顶部导航可按参数启用。

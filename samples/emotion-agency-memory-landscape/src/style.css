@@ -1,141 +1,30 @@
-@font-face {
-  font-family: 'Emotion Serif';
-  src: url('/sample/assets/emotion-agency-memory-landscape/source/fonts/EmotionSerif-Light.woff2') format('woff2');
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: 'Emotion Serif';
-  src: url('/sample/assets/emotion-agency-memory-landscape/source/fonts/EmotionSerif-LightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Emotion Mono';
-  src: url('/sample/assets/emotion-agency-memory-landscape/source/fonts/IBMPlexMono-Medium-Latin1.woff2') format('woff2');
-  font-weight: 500;
-}
-
-.emotion-landscape {
-  --emotion-text: #fffaf7;
-  --emotion-bg: #b7a6e9;
+.emotion-mirror {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 100svh;
   overflow: hidden;
-  isolation: isolate;
-  background: var(--emotion-bg);
-  color: var(--emotion-text);
-  cursor: crosshair;
-  touch-action: none;
+  background: #b7a6e9;
 }
 
-.emotion-landscape__canvas,
-.emotion-landscape__canvas canvas {
+.emotion-mirror iframe {
   position: absolute;
   inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-}
-
-.emotion-landscape::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 52% 25%, transparent 0 31%, rgb(62 24 89 / .05) 84%),
-    linear-gradient(to bottom, rgb(255 255 255 / .03), rgb(58 23 82 / .08));
-}
-
-.emotion-landscape__copy {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  text-transform: uppercase;
-  text-shadow: 0 2px 18px rgb(53 19 78 / .15);
-}
-
-.emotion-landscape__eyebrow {
-  position: absolute;
-  left: clamp(22px, 3.35vw, 66px);
-  top: 40.2%;
-  margin: 0;
-  font: 500 clamp(8px, .65vw, 13px)/1.12 'Emotion Mono', ui-monospace, monospace;
-  letter-spacing: -.045em;
-}
-
-.emotion-landscape h1 {
-  margin: 0;
-  font-family: 'Emotion Serif', Georgia, serif;
-  font-weight: 300;
-  line-height: .84;
-  letter-spacing: -.062em;
-}
-
-.emotion-landscape h1 em {
-  position: absolute;
-  left: clamp(22px, 3.35vw, 66px);
-  top: 48%;
-  font-size: clamp(62px, 7.45vw, 143px);
-  font-weight: 300;
-  text-transform: none;
-}
-
-.emotion-landscape h1 span {
-  position: absolute;
-  left: 27.5%;
-  bottom: 1.1%;
-  font-size: clamp(45px, 5.55vw, 108px);
-  white-space: nowrap;
-}
-
-.emotion-landscape__orb {
-  position: absolute;
-  z-index: 3;
-  right: 2.15%;
-  bottom: 3.1%;
-  width: clamp(35px, 4.1vw, 78px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle at 34% 28%, #fff 0 5%, #d9c6ff 14%, #8d6fd4 47%, #a051ca 68%, #47306d 100%);
-  box-shadow: 0 8px 30px rgb(71 25 102 / .28), inset -8px -10px 18px rgb(52 16 76 / .32);
-  opacity: .88;
-}
-
-.emotion-landscape--thumbnail {
-  min-height: 100%;
-  margin: 0;
+  border: 0;
   background: #b7a6e9;
 }
 
-.emotion-landscape--thumbnail img {
+.emotion-mirror--thumbnail {
+  min-height: 100%;
+}
+
+.emotion-mirror--thumbnail img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-@media (max-aspect-ratio: 6 / 5) {
-  .emotion-landscape__eyebrow { top: 26%; }
-  .emotion-landscape h1 em { top: 34%; }
-  .emotion-landscape h1 span {
-    left: 7%;
-    right: 6%;
-    bottom: 5.5%;
-    font-size: clamp(42px, 11vw, 78px);
-    white-space: normal;
-  }
-  .emotion-landscape__orb { bottom: 2.4%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .emotion-landscape { cursor: default; }
 }

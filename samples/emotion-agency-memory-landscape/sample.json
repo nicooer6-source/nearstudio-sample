@@ -1,29 +1,21 @@
 {
   "slug": "emotion-agency-memory-landscape",
   "name": "Emotion Memory Landscape",
-  "description": "Emotion Agency 首页主视觉：原站 e 字粒子、低多边形山体、草岸、水面反射与鼠标扰动。",
-  "category": "motion",
-  "tags": ["React", "Three.js", "WebGL", "Particles", "Pointer"],
+  "description": "Emotion Agency 首页完整 WebGL 运行镜像：保留粒子字母、山体、草岸、水面反射、原站文案与鼠标/滚动交互。",
+  "category": "interaction",
+  "tags": ["Nuxt", "Three.js", "WebGL", "Particles", "Pointer"],
   "status": "stable",
   "states": ["default"],
   "thumbnailState": "default",
   "thumbnailTheme": "dark",
-  "updatedAt": "2026-10-27",
+  "updatedAt": "2026-10-28",
   "sourcePath": "samples/emotion-agency-memory-landscape/src/index.tsx",
   "readmePath": "samples/emotion-agency-memory-landscape/README.md",
   "originalUrl": "https://emotion-agency.com/",
-  "interactionHint": "移动鼠标会推开 e 字粒子并改变镜头视差；按住可扩大扰动范围，松开后粒子回弹成形。",
+  "interactionHint": "原站首页真实运行环境：移动鼠标、点击与滚动都会改变粒子和 3D 场景。",
   "controls": [
-    { "key": "particleCount", "label": "粒子数量", "type": "range", "default": 5800, "min": 1600, "max": 9000, "step": 200 },
-    { "key": "driftSpeed", "label": "漂浮速度", "type": "range", "default": 0.72, "min": 0, "max": 2.5, "step": 0.05 },
-    { "key": "interactionStrength", "label": "鼠标扰动", "type": "range", "default": 1, "min": 0, "max": 2.5, "step": 0.05 },
-    { "key": "parallax", "label": "鼠标视差", "type": "range", "default": 0.62, "min": 0, "max": 2, "step": 0.05 },
-    { "key": "waterWave", "label": "水面波动", "type": "range", "default": 0.58, "min": 0, "max": 1.5, "step": 0.05 },
-    { "key": "atmosphere", "label": "雾化强度", "type": "range", "default": 0.72, "min": 0, "max": 1, "step": 0.02 },
-    { "key": "backgroundColor", "label": "天空颜色", "type": "color", "default": "#b8a5ef" },
-    { "key": "accentColor", "label": "粒子颜色", "type": "color", "default": "#bc4dff" },
-    { "key": "groundColor", "label": "地面颜色", "type": "color", "default": "#5f2d81" },
-    { "key": "textColor", "label": "文字颜色", "type": "color", "default": "#fffaf7" },
-    { "key": "showCopy", "label": "显示原站文案", "type": "toggle", "default": true }
+    { "key": "autoEnter", "label": "自动进入主视觉", "type": "toggle", "default": true },
+    { "key": "audio", "label": "进入时启用声音", "type": "toggle", "default": false },
+    { "key": "showNavigation", "label": "显示顶部导航", "type": "toggle", "default": false }
   ]
 }

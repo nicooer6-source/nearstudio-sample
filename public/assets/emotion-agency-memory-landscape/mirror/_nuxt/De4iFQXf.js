@@ -1,0 +1,1 @@
+import{z as a,k as s,l as r,a7 as t}from"./MGdOx5d6.js";const n={};function o(e,c){return s(),r("thead",null,[t(e.$slots,"default")])}const _=Object.assign(a(n,[["render",o]]),{__name:"ProseThead"});export{_ as default};
